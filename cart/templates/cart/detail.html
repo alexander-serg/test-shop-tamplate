@@ -1,0 +1,50 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+    Корзина
+{% endblock %}
+{% block content %}
+    <h1>Корзина</h1>
+    <table class="cart">
+        <thead>
+        <tr>
+            <th>Изображение</th>
+            <th>Item</th>
+            <th>Количество</th>
+            <th>Удалить</th>
+            <th>Цена за ед.</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for items in cart %}
+            {% with post=items.item %}
+                <tr>
+                    <td>
+                        <a href="{{ post.get_absolute_url }}">
+                            <img src="
+                                {% if post.photo %}
+                                    {{ post.photo.url }}
+                                {% endif %}">
+                        </a>
+                    </td>
+                    <td>{{ post.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td><a href="{% url 'cart:cart_remove' post.id %}">Удалить</a></td>
+                    <td class="num">{{ item.price }}</td>
+                    <td class="num">{{ item.total_price }}</td>
+                </tr>
+            {% endwith %}
+        {% endfor %}
+        <tr class="total">
+            <td>Total</td>
+            <td colspan="4"></td>
+            <td class="num">{{ cart.get_total_price }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="text-right">
+        <a href="{% url 'shop:home' %}" class="button light">Вернуться в каталог</a>
+        <a href="{% url 'orders:order_create' %}" class="button">Checkout</a>
+    </p>
+{% endblock %}

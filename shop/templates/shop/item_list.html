@@ -1,0 +1,219 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+   <!--Body Content-->
+    	<!--Home slider-->
+    	<div class="slideshow slideshow-wrapper pb-section">
+        	<div class="home-slideshow">
+            	<div class="slide">
+                	<div class="blur-up lazyload">
+                        <img class="blur-up lazyload" data-src="{% static 'assets/images/slideshow-banners/home2-default-banner1.jpg' %}" src="{% static 'assets/images/slideshow-banners/home2-default-banner1.jpg' %}" alt="Shop Our New Collection" title="Shop Our New Collection" />
+                        <div class="slideshow__text-wrap slideshow__overlay classic middle">
+                            <div class="slideshow__text-content middle">
+                            	<div class="container">
+                                    <div class="wrap-caption right">
+                                        <h2 class="h1 mega-title slideshow__title">Our New Collection</h2>
+                                        <span class="mega-subtitle slideshow__subtitle">Save up to 50% Off</span>
+                                        <span class="btn">Купить сейчас</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                	<div class="blur-up lazyload">
+                        <img class="blur-up lazyload" data-src="{% static 'assets/images/slideshow-banners/home2-default-banner2.jpg' %}" src="{% static 'assets/images/slideshow-banners/home2-default-banner2.jpg' %}" alt="Summer Bikini Collection" title="Summer Bikini Collection" />
+                        <div class="slideshow__text-wrap slideshow__overlay classic middle">
+                            <div class="slideshow__text-content middle">
+                            	<div class="container">
+                                    <div class="wrap-caption center">
+                                        <h2 class="h1 mega-title slideshow__title">Fashion &amp; Show</h2>
+                                        <span class="mega-subtitle slideshow__subtitle">A World Fashion and Trendy Fashion Clother's</span>
+                                        <span class="btn">Купить сейчас</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Home slider-->
+        <!--New Arrivals-->
+        <div class="product-rows section">
+        	<div class="container">
+            	<div class="row">
+                	<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        				<div class="section-header text-center">
+                            <h2 class="h2">New Arrivals</h2>
+                            <p>Grab these new items before they are gone!</p>
+                        </div>
+            		</div>
+                </div>
+	            <div class="grid-products">
+                	<div class="row">
+                        {% for imd in image_dress %}
+                        <div class="col-6 col-sm-2 col-md-3 col-lg-3 item">
+                            <!-- start product image -->
+                            <div class="product-image">
+                                <!-- start product image -->
+                                <a href="{{ imd.itpm.get_absolute_url }}" class="grid-view-item__link">
+                                    <!-- image -->
+                                    <img class="primary blur-up lazyload" data-src="{{ imd.image.url }}" src="{{ imd.image.url }}" alt="image" title="product">
+                                    <!-- End image -->
+                                    <!-- Hover image -->
+                                    <img class="hover blur-up lazyload" data-src="{% static 'assets/images/product-images/product-image1-1.jpg' %}" src="{% static 'assets/images/product-images/product-image1-1.jpg' %}" alt="image" title="product">
+                                    <!-- End hover image -->
+                                    <!-- Variant Image-->
+                                    <img class="grid-view-item__image hover variantImg" src="{% static 'assets/images/product-images/product-image1.jpg' %}" alt="image" title="product">
+                                    <!-- Variant Image-->
+                                    <!-- product label -->
+                                    <div class="product-labels rounded"><span class="lbl on-sale">Sale</span> <span class="lbl pr-label1">new</span></div>
+                                    <!-- End product label -->
+                                </a>
+                                <!-- end product image -->
+
+                                <!-- countdown start -->
+                                <div class="saleTime desktop" data-countdown="2022/03/01"></div>
+                                <!-- countdown end -->
+
+                                <!-- Start product button -->
+                                <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
+                                    <button class="btn btn-addto-cart" type="button" tabindex="0">Add To Cart</button>
+                                </form>
+                                <div class="button-set">
+                                    <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
+                                        <i class="icon anm anm-search-plus-r"></i>
+                                    </a>
+                                    <div class="wishlist-btn">
+                                        <a class="wishlist add-to-wishlist" href="wishlist.html">
+                                            <i class="icon anm anm-heart-l"></i>
+                                        </a>
+                                    </div>
+                                    <div class="compare-btn">
+                                        <a class="compare add-to-compare" href="compare.html" title="Add to Compare">
+                                            <i class="icon anm anm-random-r"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- end product button -->
+                            </div>
+                            <!-- end product image -->
+                            <!--start product details -->
+                            <div class="product-details text-center">
+                                <!-- product name -->
+                                <div class="product-name">
+                                    <a href="product-layout-1.html">{{ imd.itpm.name }}</a>
+                                </div>
+                                <!-- End product name -->
+                                <!-- product price -->
+                                <div class="product-price">
+                                    <span class="old-price">$500.00</span>
+                                    <span class="price">{{ imd.itpm.price }}</span>
+                                </div>
+                                <!-- End product price -->
+                                <!-- Color Variant -->
+                                <ul class="swatches">
+                                    <li class="swatch small rounded navy" rel="assets/images/product-images/product-image-stw1.jpg"></li>
+                                    <li class="swatch small rounded green" rel="assets/images/product-images/product-image-stw1-1.jpg"></li>
+                                    <li class="swatch small rounded gray" rel="assets/images/product-images/product-image-stw1-2.jpg"></li>
+                                    <li class="swatch small rounded aqua" rel="assets/images/product-images/product-image-stw1-3.jpg"></li>
+                                    <li class="swatch small rounded orange" rel="assets/images/product-images/product-image-stw1-4.jpg"></li>
+                                </ul>
+                                <!-- End Variant -->
+                            </div>
+                            <!-- End product details -->
+                        </div>
+                    {% endfor %}
+                    </div>
+                    <div class="row">
+                    	<div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                        	<a href="shop-left-sidebar.html" class="btn">View all</a>
+                        </div>
+                    </div>
+                </div>
+           </div>
+        </div>
+        <!--End Featured Product-->
+<!--  <section class="shop_section layout_padding">-->
+<!--    <div class="container">-->
+<!--      <div class="heading_container heading_center">-->
+<!--        <h2>-->
+<!--          Последнее-->
+<!--        </h2>-->
+<!--      </div>-->
+<!--      <div class="row">-->
+<!--	{% for p in posts %}-->
+<!--        <div class="col-sm-6 col-md-4 col-lg-3">-->
+<!--          <div class="box">-->
+<!--            <a href="{{ p.get_absolute_url }}">-->
+<!--			{% if p.photo %}-->
+<!--              <div class="img-box">-->
+<!--                <img src="{{p.photo.url}}" alt="">-->
+<!--              </div>-->
+<!--			{% endif %}-->
+<!--              <div class="detail-box">-->
+<!--                <h6>-->
+<!--                  {{p.name}}-->
+<!--                </h6>-->
+<!--                <h6>-->
+<!--                  Цена-->
+<!--                  <span>-->
+<!--                    ${{p.price}}-->
+<!--                  </span>-->
+<!--                </h6>-->
+<!--              </div>-->
+<!--              <div class="new">-->
+<!--                <span>-->
+<!--                  New-->
+<!--                </span>-->
+<!--              </div>-->
+<!--            </a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--	{% endfor %}-->
+<!--      <div class="btn-box">-->
+<!--        <a href="">-->
+<!--          View All Products-->
+<!--        </a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--		</div>-->
+<!--  </section>-->
+<!--<section class="saving_section ">-->
+<!--    <div class="box">-->
+<!--      <div class="container-fluid">-->
+<!--        <div class="row">-->
+<!--          <div class="col-lg-6">-->
+<!--            <div class="img-box">-->
+<!--              <img src="images/saving-img.png" alt="">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-lg-6">-->
+<!--            <div class="detail-box">-->
+<!--              <div class="heading_container">-->
+<!--                <h2>-->
+<!--                  Best Savings on <br>-->
+<!--                  new arrivals-->
+<!--                </h2>-->
+<!--              </div>-->
+<!--              <p>-->
+<!--                Qui ex dolore at repellat, quia neque doloribus omnis adipisci, ipsum eos odio fugit ut eveniet blanditiis praesentium totam non nostrum dignissimos nihil eius facere et eaque. Qui, animi obcaecati.-->
+<!--              </p>-->
+<!--              <div class="btn-box">-->
+<!--                <a href="#" class="btn1">-->
+<!--                  Buy Now-->
+<!--                </a>-->
+<!--                <a href="#" class="btn2">-->
+<!--                  See More-->
+<!--                </a>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </section>-->
+
+{% endblock %}
