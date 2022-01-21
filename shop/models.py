@@ -18,6 +18,9 @@ class Item(models.Model):
     def get_absolute_url(self):
         return reverse('shop:post', kwargs={'post_slug': self.slug})
 
+    def image_get(self):
+        return ItemImage.objects.get(itpm=self, is_main=True)
+
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
@@ -33,7 +36,7 @@ class ItemImage(models.Model):
     time_update = models.DateTimeField(auto_now=True, verbose_name="Время изменения")
 
     def __str__(self):
-        return '{}'.format(self.id)
+        return '{}'.format(self.itpm.name)
 
     class Meta:
         verbose_name = 'Изображение'

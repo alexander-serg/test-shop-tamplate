@@ -3,10 +3,37 @@
 {% block title %}Счет{% endblock %}
 
 {% block content %}
-    <h1>Счет</h1>
-    <div class="order-info">
-        <h3>Ваш заказ</h3>
-        <ul>
+<!--Body Content-->
+    <div id="page-content">
+        <div class="bredcrumbWrap">
+                    <div class="container breadcrumbs">
+                         <a href="/" title="Back to the home page">Каталог</a><span aria-hidden="true">›</span><a href="{% url 'cart:cart_detail' %}" title="Back to the home page">Ваша корзина</a>›<span aria-hidden="true"></span><span>Заказ</span>
+                    </div>
+        </div>
+         <div class="container">
+
+
+            <div class="row billing-fields">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 sm-margin-30px-bottom">
+                    <div class="create-ac-content bg-light-gray padding-20px-all">
+                          <h2 class="login-title mb-3">Заполните форму для заказа</h2>
+                        <form action=" " method="post" class="order-form"> {% csrf_token %}
+
+
+                                 {{ form.as_p }}
+                                     <div class="order-button-payment">
+                                    <button class="btn" type="submit">Отправить заказ</button>
+                                </div>
+
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="your-order-payment">
+                        <div class="your-order">
+                            <h2 class="order-title mb-4">Ваш заказ</h2>
+<ul>
             {% for item in cart %}
                 <li>
                     {{ item.quantity }}* {{ item.post.name }}
@@ -15,11 +42,67 @@
             {% endfor %}
         </ul>
         <p>Всего: {{cart.get_total_price }}</p>
-    </div>
-    <form action=" " method="post" class="order-form"> {% csrf_token %}
-        {{ form.as_p }}
-        <div>
-        <button type="submit">Post</button>
+                            <div class="table-responsive-sm order-table">
+
+                                <table class="bg-white table table-bordered table-hover text-center">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-left">Product Name</th>
+                                            <th>Price</th>
+                                            <th>Size</th>
+                                            <th>Qty</th>
+                                            <th>Subtotal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-left">Spike Jacket</td>
+                                            <td>$99</td>
+                                            <td>S</td>
+                                            <td>1</td>
+                                            <td>$99</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left">Argon Sweater</td>
+                                            <td>$199</td>
+                                            <td>M</td>
+                                            <td>2</td>
+                                            <td>$298</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left">Babydoll Bow Dress</td>
+                                            <td>$299</td>
+                                            <td>XL</td>
+                                            <td>3</td>
+                                            <td>$398</td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot class="font-weight-600">
+                                        <tr>
+                                            <td colspan="4" class="text-right">Shipping </td>
+                                            <td>$50.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" class="text-right">Total</td>
+                                            <td>$845.00</td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+
+                        <hr />
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
         </div>
-    </form>
+    </div>
 {% endblock %}

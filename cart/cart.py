@@ -15,7 +15,8 @@ class Cart(object):
         post_id = str(post.id)
         if post_id not in self.cart:
             self.cart[post_id] = {'quantity': 0,
-                                  'price': str(post.price)}
+                                  'price': str(post.price),
+                                  }
         if update_quantity:
             self.cart[post_id]['quantity'] = quantity
         else:
@@ -37,6 +38,8 @@ class Cart(object):
         posts = Item.objects.filter(id__in=post_ids)
         for post in posts:
             self.cart[str(post.id)]['item'] = post
+
+
 
         for item in self.cart.values():
             item['price'] = Decimal(item['price'])

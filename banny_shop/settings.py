@@ -59,7 +59,7 @@ ROOT_URLCONF = 'banny_shop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -140,5 +140,6 @@ EMAIL_HOST_USER = 'karandashsou@gmail.com'
 EMAIL_HOST_PASSWORD = 'mpjhwdtofiobivkm'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
 
 

@@ -23,7 +23,7 @@ class Order(models.Model):
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    status = models.ForeignKey(Status, on_delete=models.DO_NOTHING, related_name='статус',)
+    status = models.ForeignKey(Status, blank=True, null=True, default=None, on_delete=models.CASCADE, related_name='статус')
 
     class Meta:
         ordering = ('-created',)
@@ -31,7 +31,7 @@ class Order(models.Model):
         verbose_name_plural = 'Заказы'
 
     def __str__(self):
-        return  'Заказ {0} статус {1}'.format(self.id, self.status.name)
+        return  'Заказ {0}'.format(self.id)
 
     def get_total_cost(self):
         return sum(item.get_cost() for item in self.items.all())
@@ -41,9 +41,9 @@ class Order(models.Model):
         super(Order, self).save(*args, **kwargs)
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order, blank=True, null=True, default=None, on_delete=models.DO_NOTHING)
-    post = models.ForeignKey(Item, blank=True, null=True, default=None, on_delete=models.DO_NOTHING, related_name='order_items')
-    price_per_item = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    order = models.ForeignKey(Order, blank=True, null=True, default=None, on_delete=models.CASCADE)
+    post = models.ForeignKey(Item, blank=True, null=True, default=None, on_delete=models.CASCADE, related_name='order_items')
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     quantity = models.PositiveIntegerField(default=1)
 
@@ -55,7 +55,7 @@ class OrderItem(models.Model):
 
     def save(self, *args, **kwargs):
         price_per_item = self.post.price
-        self.price_per_item = price_per_item
+        self.price = price_per_item
         self.total_price = self.quantity * price_per_item
 
         super(OrderItem, self).save(*args, **kwargs)

@@ -4,47 +4,102 @@
     Корзина
 {% endblock %}
 {% block content %}
-    <h1>Корзина</h1>
-    <table class="cart">
-        <thead>
-        <tr>
-            <th>Изображение</th>
-            <th>Item</th>
-            <th>Количество</th>
-            <th>Удалить</th>
-            <th>Цена за ед.</th>
-            <th>Price</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for items in cart %}
-            {% with post=items.item %}
-                <tr>
-                    <td>
-                        <a href="{{ post.get_absolute_url }}">
-                            <img src="
-                                {% if post.photo %}
-                                    {{ post.photo.url }}
-                                {% endif %}">
-                        </a>
-                    </td>
-                    <td>{{ post.name }}</td>
-                    <td>{{ item.quantity }}</td>
-                    <td><a href="{% url 'cart:cart_remove' post.id %}">Удалить</a></td>
-                    <td class="num">{{ item.price }}</td>
-                    <td class="num">{{ item.total_price }}</td>
-                </tr>
-            {% endwith %}
-        {% endfor %}
-        <tr class="total">
-            <td>Total</td>
-            <td colspan="4"></td>
-            <td class="num">{{ cart.get_total_price }}</td>
-        </tr>
-        </tbody>
-    </table>
-    <p class="text-right">
+<!--Body Content-->
+ <p class="text-right">
         <a href="{% url 'shop:home' %}" class="button light">Вернуться в каталог</a>
         <a href="{% url 'orders:order_create' %}" class="button">Checkout</a>
     </p>
+    <div id="page-content">
+        <div class="bredcrumbWrap">
+                    <div class="container breadcrumbs">
+                        <a href="/" title="Back to the home page">Каталог</a><span aria-hidden="true">›</span><span>Ваша корзина</span>
+                    </div>
+                </div>
+    	<!--Page Title-->
+        <!--End Page Title-->
+
+        <div class="container">
+        	<div class="row">
+                <div class="col-12 col-sm-12 col-md-8 col-lg-8 main-col">
+                	<form action="#" method="post" class="cart style2">
+                		<table>
+                            <thead class="cart__row cart__header">
+                                <tr>
+                                    <th colspan="2" class="text-right" style=""></th>
+                                    <th class="text-left">Цена за ед.</th>
+                                    <th class="text-center">Кол-во</th>
+                                    <th class="text-right">Всего</th>
+                                    <th class="action">&nbsp;</th>
+                                </tr>
+                            </thead>
+                    		<tbody>
+                    {% for items in cart %}
+                         {% with post=items.item %}
+                                <tr class="cart__row border-bottom line1 cart-flex border-top">
+                                    {% with variable=post.image_get %}
+                                    <td class="cart__image-wrapper cart-flex-item">
+                                        <a href="{{ post.get_absolute_url  }}"><img class="cart__image" src="{{ variable.image.url }}" alt="Elastic Waist Dress - Navy / Small"></a>
+                                    </td>{% endwith %}
+                                    <td class="cart__meta small--text-left cart-flex-item">
+                                        <div class="list-view-item__title">
+                                            <a href="{{ post.get_absolute_url }}">{{ post.name }} </a>
+                                        </div>
+
+                                        <div class="cart__meta-text">
+                                            Color: Navy<br>Size: Small<br>
+                                        </div>
+                                    </td>
+                                    <td class="cart__price-wrapper cart-flex-item">
+                                        <span class="money">{{ items.price }}</span>
+                                    </td>
+                                    <td class="cart__update-wrapper cart-flex-item text-right">
+                                        <div class="cart__qty text-center">
+                                            <div class="qtyField">
+                                                {{ items.quantity }}
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-right small--hide cart-price">
+                                        <div><span class="money">{{ items.total_price }}</span></div>
+                                    </td>
+                                    <td class="text-center"><a href="{% url 'cart:cart_remove' post.id %}" class="btn btn--secondary cart__remove" title="Remove tem"><i class="icon icon anm anm-times-l"></i></a></td>
+                                </tr>
+                    {% endwith %}
+                        {% endfor %}
+                            </tbody>
+                    		<tfoot>
+                                <tr>
+                                    <td colspan="3" class="text-left"><a href="/" class="btn--link cart-continue"><i class="icon icon-arrow-circle-left"></i> Продолжить покупки</a></td>
+                                </tr>
+                            </tfoot>
+                    </table>
+
+
+                    <hr>
+
+                    </form>
+               	</div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 cart__footer">
+                	<div class="cart-note">
+                    	<div class="solid-border">
+							<h5><label for="CartSpecialInstructions" class="cart-note__label small--text-center" style="background-color: yellow">Add a note to your order</label></h5>
+							<textarea name="note" id="CartSpecialInstructions" class="cart-note__input"></textarea>
+						</div>
+                    </div>
+                    <div class="solid-border">
+                      <div class="row">
+                      	<span class="col-12 col-sm-6 cart__subtotal-title"><strong>Общая стоимость заказа</strong></span>
+                        <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">{{ cart.get_total_price }}</span></span>
+                      </div>
+
+
+                        <a id="cartCheckout" class="btn btn--small-wide checkout" disabled="disabled" href="{% url 'orders:order_create' %}">Checkout</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--End Body Content-->
 {% endblock %}

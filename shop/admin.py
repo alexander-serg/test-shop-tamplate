@@ -24,3 +24,6 @@ class ItemImageAdmin(admin.ModelAdmin):
         model = ItemImage
 
 admin.site.register(ItemImage, ItemImageAdmin)
+
+admin.site.site_title = 'Админка'
+admin.site.site_header = 'Админка'
