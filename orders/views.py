@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from .models import OrderItem
 from .forms import OrderCreateForm
 from cart.cart import Cart
@@ -16,7 +17,7 @@ def order_create(request):
                                          price=item['price'],
                                          quantity=item['quantity'])
             cart.clear()
-            order_created(order.id)
+            order_created(order.id, cart)
             return render(request, 'orders/order/created.html',
                           {'order': order})
     else:

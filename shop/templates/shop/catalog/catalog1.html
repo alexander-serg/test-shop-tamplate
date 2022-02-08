@@ -1,0 +1,114 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+   <!--Body Content--> 
+<div class="d-flex justify-content-around" style="margin-bottom: 5px; margin-top: 3px;">
+    <div class="container breadcrumbs" style="margin: 0; padding: 0; border 0;">
+        <div class="collapse navbar-collapse d-flex justify-content-around" style="display: flex; justify-content: space-between;">
+          <div class="d-flex justify-content-center">
+            <input type="button" class="button-30" style=" box-shadow: #D6D6E7 0 3px 7px inset; transform: translateY(2px);" onclick="location.href='{% url 'shop:wedding' %}';" value="СВАДЕБНЫЕ">
+            <input type="button" class="button-30" onclick="location.href='{% url 'shop:evening' %}';" value="ВЕЧЕРНИЕ">
+            <input type="button" class="button-30" onclick="location.href='{% url 'shop:child' %}';" value="ДЕТСКИЕ">
+          </div>  
+         
+        </div>
+                    </div>
+</div>
+
+
+
+
+
+        <!--Home slider-->
+<div id="page-content">
+        <div class="collection-header">
+            <div class="collection-hero">
+                <div class="collection-hero__image"><img class="blur-up lazyload" data-src="{% static 'assets/images/cat-women2.jpg' %}" src="{% static 'assets/images/cat-women2.jpg' %}" alt="Women" title="Women" /></div>
+                <div class="collection-hero__title-wrapper"><h1 class="collection-hero__title page-width">Shop Grid</h1></div>
+            </div>
+        </div>
+        <div class="product-rows section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="section-header text-center">
+                            <h2 class="h2">Свадебные платья</h2>
+                            <p>Grab these new items before they are gone!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-products">
+                    <div class="row">
+                        {% for imd in page_obj %}
+                     
+                        
+                       <div class="col-6 col-sm-2 col-md-3 col-lg-3 item">
+                            <!-- start product image -->
+                            <div class="product-image">
+                                <!-- start product image -->
+                                <a href="{{ imd.itpm.get_absolute_url }}" class="grid-view-item__link">
+                                    <!-- image -->
+                                    <img class="blur-up lazyload" data-src="{{ imd.image.url }}" src="{{ imd.image.url }}" alt="image" title="product">
+                                    <!-- End image -->
+                                    <img class="grid-view-item__image hover variantImg" src="{{ imd.image.url }}" alt="image" title="product">
+                                    <!-- Variant Image--> 
+                                    <!-- product label -->
+                                    <div class="product-labels rounded">
+                                        {% if imd.itpm.action %}
+                                        <span class="lbl on-sale">- {{ imd.itpm.action }} %</span>
+                                        {% endif %}
+                                        {% if imd.itpm.is_new %}
+                                        <span class="lbl pr-label1">Новое</span>
+                                        {% endif %}
+                                    </div>                                       
+                                    <!-- End product label -->
+                                </a>
+                                <!-- end product image -->
+                            </div>
+                            <!-- end product image -->
+                            <!--start product details -->
+                            <div class="product-details text-center">
+                                <!-- product name -->
+                                <div class="product-name">
+                                    <a href="product-layout-1.html">{{ imd.itpm.name }}</a>
+                                </div>
+                                <!-- End product name -->
+                                <!-- product price -->
+                                <div class="product-price">
+                                    {% if imd.itpm.old_price %}
+                                    <span class="old-price">{{ imd.itpm.old_price }}</span>
+                                    {% endif %}
+                                    <span class="price">{{ imd.itpm.price }}</span>
+                                </div>
+                                <!-- End product price -->
+                            </div>
+                            <!-- End product details -->
+                        </div>
+                    {% endfor %}
+                    </div>
+                    {% if page_obj.has_other_pages %}
+                    <hr class="clear">
+                    <div class="pagination">
+                      <ul>
+                        {% if page_obj.has_previous %}
+                        <li class=""><a href="?page={{ page_obj.previous_page_number }}">&lt</a></li>
+                        {% endif %}
+                        {%for p in page_obj.paginator.page_range %}
+                        {% if page_obj.number == p %}
+                        <li class="active"><a href="?page={{ p }}">{{ p }}</a></li>
+                        {% elif p >= page_obj.number|add:-3 and p <= page_obj.number|add:3 %}
+                        <li class=""><a href="?page={{ p }}">{{ p }}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                        <li class=""><a href="?page={{ page_obj.next_page_number }}">&gt</a></li>
+                        {% endif %}
+                      </ul>
+                    </div>
+                    {% endif %}
+                </div>
+           </div>
+        </div>
+   
+</div>
+{% endblock %}

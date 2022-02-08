@@ -2,15 +2,14 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
-<!-- belle/index.html   11 Nov 2019 12:16:10 GMT -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Belle Multipurpose Bootstrap 4 Html Template</title>
+<title>@shop</title>
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon -->
-<link rel="shortcut icon" href="{% static 'assets/images/favicon.png' %}" />
+<link rel="shortcut icon" href="{% static 'assets/images/icon.png' %}" />
 <!-- Plugins CSS -->
 <link rel="stylesheet" href="{% static 'assets/css/plugins.css' %}">
 <!-- Bootstap CSS -->
@@ -18,6 +17,7 @@
 <!-- Main Style CSS -->
 <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
 <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+
 </head>
 <body class="template-index belle template-index-belle">
 <div id="pre-loader">
@@ -34,7 +34,7 @@
             	<!--Desktop Logo-->
                 <div class="logo col-md-2 col-lg-2 d-none d-lg-block">
                     <a href="/">
-                    	<img src="{% static 'assets/images/logo.svg' %}" alt="Belle Multipurpose Html Template" title="Belle Multipurpose Html Template" />
+                    	<img src="{% static 'assets/images/logo/log1.png' %}" alt="Belle Multipurpose Html Template" title="Belle Multipurpose Html Template" />
                     </a>
                 </div>
                 <!--End Desktop Logo-->
@@ -48,13 +48,12 @@
                 	<!--Desktop Menu-->
                 	<nav class="grid__item" id="AccessibleNav"><!-- for mobile -->
                         <ul id="siteNav" class="site-nav medium center hidearrow">
-                            {% for m in menu %}
-	                            {% if not forloop.last %}
-                                    <li class="lvl1 parent megamenu"><a href="#">{{m.title}} <i class="anm anm-angle-down-l"></i></a></li>
-                                {% else %}
-                                    <li class="lvl1"><a href="#"><b>{{m.title}}</b> <i class="anm anm-angle-down-l"></i></a></li>
-                                {% endif %}
-                            {% endfor %}
+                            
+                                    <li class="lvl1 parent megamenu"><a href="{% url 'shop:action' %}">Акции<i class="anm anm-angle-down-l"></i></a></li>
+                                    <li class="lvl1 parent megamenu"><a href="{% url 'shop:sale' %}">Распродажа<i class="anm anm-angle-down-l"></i></a></li>
+                                    <li class="lvl1 parent megamenu"><a href="{% url 'shop:rental' %}">Условия проката<i class="anm anm-angle-down-l"></i></a></li>
+                                    <li class="lvl1"><a href="{% url 'shop:contact' %}"><b>Контакты</b> <i class="anm anm-angle-down-l"></i></a></li>
+                                
                         </ul>
                     </nav>
                     <!--End Desktop Menu-->
@@ -63,7 +62,7 @@
                 <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo">
                 	<div class="logo">
                         <a href="/">
-                            <img src="{% static 'assets/images/logo.svg' %}" alt="Belle Multipurpose Html Template" title="Belle Multipurpose Html Template" />
+                            <img src="{% static 'assets/images/logo/log1.png' %}"  alt="Belle Multipurpose Html Template" title="Belle Multipurpose Html Template" />
                         </a>
                     </div>
                 </div>
@@ -84,107 +83,32 @@
                                 {% endif %}
                             {% endwith %}
                         </a>
-                         <!--Minicart Popup-->
-<!--                        <div id="header-cart" class="block block-cart cart">-->
-<!--                            {% with total_items=cart|length %}-->
-<!--					            {% if cart|length > 0 %}-->
-<!--						            Ваша корзина:-->
-<!--						        <a href="{% url 'cart:cart_detail' %}" class="site-header__cart" title="Cart">-->
-<!--							        {{ total_items }} item{{total_items|pluralize }},-->
-<!--							        {{ cart.get_total_price }}-->
-<!--						        </a>-->
-<!--					            {% else %}-->
-<!--						            Ваша корзина пуста-->
-<!--					            {% endif %}-->
-<!--				            {% endwith %}-->
-<!--                        	<ul class="mini-products-list">-->
-<!--                                <li class="item">-->
-<!--                                	<a class="product-image" href="#">-->
-<!--                                    	<img src="{% static 'assets/images/product-images/cape-dress-1.jpg' %}" alt="3/4 Sleeve Kimono Dress" title="" />-->
-<!--                                    </a>-->
-<!--                                    <div class="product-details">-->
-<!--                                    	<a href="#" class="remove"><i class="anm anm-times-l" aria-hidden="true"></i></a>-->
-<!--                                        <a href="#" class="edit-i remove"><i class="anm anm-edit" aria-hidden="true"></i></a>-->
-<!--                                        <a class="pName" href="cart.html">Sleeve Kimono Dress</a>-->
-<!--                                        <div class="variant-cart">Black / XL</div>-->
-<!--                                        <div class="wrapQtyBtn">-->
-<!--                                            <div class="qtyField">-->
-<!--                                            	<span class="label">Qty:</span>-->
-<!--                                                <a class="qtyBtn minus" href="javascript:void(0);"><i class="fa anm anm-minus-r" aria-hidden="true"></i></a>-->
-<!--                                                <input type="text" id="Quantity" name="quantity" value="1" class="product-form__input qty">-->
-<!--                                                <a class="qtyBtn plus" href="javascript:void(0);"><i class="fa anm anm-plus-r" aria-hidden="true"></i></a>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                        <div class="priceRow">-->
-<!--                                        	<div class="product-price">-->
-<!--                                            	<span class="money">$59.00</span>-->
-<!--                                            </div>-->
-<!--                                         </div>-->
-<!--									</div>-->
-<!--                                </li>-->
-<!--                                <li class="item">-->
-<!--                                	<a class="product-image" href="#">-->
-<!--                                    	<img src="{% static 'assets/images/product-images/cape-dress-2.jpg' %}" alt="Elastic Waist Dress - Black / Small" title="" />-->
-<!--                                    </a>-->
-<!--                                    <div class="product-details">-->
-<!--                                    	<a href="#" class="remove"><i class="anm anm-times-l" aria-hidden="true"></i></a>-->
-<!--                                        <a href="#" class="edit-i remove"><i class="anm anm-edit" aria-hidden="true"></i></a>-->
-<!--                                        <a class="pName" href="cart.html">Elastic Waist Dress</a>-->
-<!--                                        <div class="variant-cart">Gray / XXL</div>-->
-<!--                                        <div class="wrapQtyBtn">-->
-<!--                                            <div class="qtyField">-->
-<!--                                            	<span class="label">Qty:</span>-->
-<!--                                                <a class="qtyBtn minus" href="javascript:void(0);"><i class="fa anm anm-minus-r" aria-hidden="true"></i></a>-->
-<!--                                                <input type="text" id="Quantity" name="quantity" value="1" class="product-form__input qty">-->
-<!--                                                <a class="qtyBtn plus" href="javascript:void(0);"><i class="fa anm anm-plus-r" aria-hidden="true"></i></a>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                       	<div class="priceRow">-->
-<!--                                            <div class="product-price">-->
-<!--                                                <span class="money">$99.00</span>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </li>-->
-<!--                            </ul>-->
-<!--                            <div class="total">-->
-<!--                            	<div class="total-in">-->
-<!--                                	<span class="label">Cart Subtotal:</span><span class="product-price"><span class="money">$748.00</span></span>-->
-<!--                                </div>-->
-<!--                                 <div class="buttonSet text-center">-->
-<!--                                    <a href="cart.html" class="btn btn-secondary btn&#45;&#45;small">View Cart</a>-->
-<!--                                    <a href="checkout.html" class="btn btn-secondary btn&#45;&#45;small">Checkout</a>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-                        <!--End Minicart Popup-->
+
                     </div>
                 </div>
         	</div>
+
         </div>
     </div>
     <!--End Header-->
-
+ 
     <!--Mobile Menu-->
     <div class="mobile-nav-wrapper" role="navigation">
 		<div class="closemobileMenu"><i class="icon anm anm-times-l pull-right"></i> Закрыть меню</div>
         <ul id="MobileNav" class="mobile-nav">
-             {% for m in menu %}
-	                            {% if not forloop.last %}
-                <li class="lvl1 parent megamenu"><a href="#">{{m.title}} </a></li>
 
-                                {% else %}
-                <li class="lvl1"><a href="#"><b>{{m.title}}</b></a></li>
-                                {% endif %}
-             {% endfor %}
+                <li class="lvl1 parent megamenu"><a href="{% url 'shop:action' %}">Акции</a></li>
+                <li class="lvl1 parent megamenu"><a href="{% url 'shop:sale' %}">Распродажа</a></li>
+                <li class="lvl1 parent megamenu"><a href="{% url 'shop:rental' %}">Условия проката</a></li>                              
+                <li class="lvl1"><a href="{% url 'shop:contact' %}"><b>Контакты</b></a></li>
+          
       </ul>
-	</div>
+	</div>         
 
 
-
+ 
     <!--Scoll Top-->
-    <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
-    <!--End Scoll Top-->
+   
     {% endblock mainmenu %}
 
     <div id="page-content">
@@ -193,25 +117,43 @@
 	</div>
     <!--footer-->
      <footer id="footer" class="footer-2">
-         <div class="newsletter-section">
+ <!--         <div class="newsletter-section">
             <div class="container">
                 <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-7 w-100 d-flex justify-content-start align-items-center">
+                            <div class="display-table">
+                                <div class="display-table-cell footer-newsletter">
+                                    <div class="section-header text-center">
+                                        <label class="h2">Есть вопросы?<span>С удовольствием ответим на них</span></label>
+                                    </div>
+                                    <form action="#" method="post">
+                                        <div class="input-group">
+                                            
+                                            <input type="email" class="input-group__field newsletter__input" name="EMAIL" value="" placeholder="Email address" required="">
+                                            <span class="input-group__btn">
+                                                <button type="submit" class="btn newsletter__submit" name="commit" id="Subscribe"><span class="newsletter__submit-text--large" style="white-space: nowrap;">Жду звонка</span></button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-end align-items-center">
                             <div class="footer-social">
                                 <ul class="list--inline site-footer__social-icons social-icons">
-                                    <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Facebook"><i class="icon icon-facebook"></i></a></li>
-                                    <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Twitter"><i class="icon icon-twitter"></i> <span class="icon__fallback-text">Twitter</span></a></li>
-                                    <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Pinterest"><i class="icon icon-pinterest"></i> <span class="icon__fallback-text">Pinterest</span></a></li>
-                                    <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Instagram"><i class="icon icon-instagram"></i> <span class="icon__fallback-text">Instagram</span></a></li>
+                                   
+                                    <li><a class="social-icons__link" href="https://instagram.com/loveyoustepan?utm_medium=copy_link" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Instagram"><i class="icon icon-instagram"></i> <span class="icon__fallback-text">Instagram</span></a></li>
                                     <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Tumblr"><i class="icon icon-tumblr-alt"></i> <span class="icon__fallback-text">Tumblr</span></a></li>
-                                    <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on YouTube"><i class="icon icon-youtube"></i> <span class="icon__fallback-text">YouTube</span></a></li>
-                                    <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Vimeo"><i class="icon icon-vimeo-alt"></i> <span class="icon__fallback-text">Vimeo</span></a></li>
+                                    
+                                    
                                 </ul>
                             </div>
                         </div>
                     </div>
             </div>
         </div>
+    -->
+
         <div class="site-footer">
         	<div class="container">
      			<!--Footer Links-->
@@ -219,7 +161,7 @@
                 	<div class="row">
 
                         <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
-                        	<h4 class="h4">Customer Services</h4>
+                        	<h4 class="h4">Статьи</h4>
                             <ul>
                             	<li><a href="#">Request Personal Data</a></li>
                                 <li><a href="#">FAQ's</a></li>
@@ -228,27 +170,28 @@
                                 <li><a href="#">Support Center</a></li>
                             </ul>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
-                        	<h4 class="h4">Informations</h4>
-                            <ul>
-                            	<li><a href="#">About us</a></li>
-                                <li><a href="#">Careers</a></li>
-                                <li><a href="#">Privacy policy</a></li>
-                                <li><a href="#">Terms &amp; condition</a></li>
-                                <li><a href="#">My Account</a></li>
-                            </ul>
+                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        	<h4 class="h4"></h4>
+<!--                            <ul>-->
+<!--                            	<li><a href="#">About us</a></li>-->
+<!--                                <li><a href="#">Careers</a></li>-->
+<!--                                <li><a href="#">Privacy policy</a></li>-->
+<!--                                <li><a href="#">Terms &amp; condition</a></li>-->
+<!--                                <li><a href="#">My Account</a></li>-->
+<!--                            </ul>-->
                         </div>
                         <div class="col-12 col-sm-12 col-md-3 col-lg-3 contact-box">
-                        	<h4 class="h4">Contact Us</h4>
+                        	<h4 class="h4">Контакты</h4>
                             <ul class="addressFooter">
                             	<li><i class="icon anm anm-map-marker-al"></i><p>55 Gallaxy Enque,<br>2568 steet, 23568 NY</p></li>
                                 <li class="phone"><i class="icon anm anm-phone-s"></i><p>(440) 000 000 0000</p></li>
                                 <li class="email"><i class="icon anm anm-envelope-l"></i><p>sales@yousite.com</p></li>
+                                <li><a class="social-icons__link" href="https://instagram.com/loveyoustepan?utm_medium=copy_link" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Instagram"><i class="icon icon-instagram"></i> <span class="icon__fallback-text">Instagram</span><p>Instagram</p></a></li>
                             </ul>
                         </div>
 
                         <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
-                        	<h4 class="h4">Need help</h4>
+                        	<h4 class="h4">Время работы</h4>
                             <ul>
                             	<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet,</li>
                             </ul>
@@ -260,7 +203,7 @@
                 <div class="footer-bottom">
                 	<div class="row">
                     	<!--Footer Copyright-->
-	                	<div class="col-12 col-sm-12 col-md-12 col-lg-12 order-1 order-md-0 order-lg-0 order-sm-1 copyright text-center"><span></span> <a href="templateshub.net">Templates Hub</a></div>
+	                	<div class="col-12 col-sm-12 col-md-12 col-lg-12 order-1 order-md-0 order-lg-0 order-sm-1 copyright text-center"><span></span> <a href="templateshub.net"></a></div>
                         <!--End Footer Copyright-->
                     </div>
                 </div>
@@ -282,12 +225,58 @@
      <script src="{% static 'assets/js/plugins.js' %}"></script>
      <script src="{% static 'assets/js/popper.min.js' %}" ></script>
      <script src="{% static 'assets/js/lazysizes.js' %}"></script>
-    <script src="{% static 'assets/js/main.js' %}"></script>
-
+     <script src="{% static 'assets/js/main.js' %}"></script>
+      <script src="{% static 'assets/js/vendor/photoswipe.min.js' %}"></script>
+     <script src="{% static 'assets/js/vendor/photoswipe-ui-default.min.js' %}"></script>
+     <script>
+        $(function(){
+            var $pswp = $('.pswp')[0],
+                image = [],
+                getItems = function() {
+                    var items = [];
+                    $('.lightboximages a').each(function() {
+                        var $href   = $(this).attr('href'),
+                            $size   = $(this).data('size').split('x'),
+                            item = {
+                                src : $href,
+                                w: $size[0],
+                                h: $size[1]
+                            }
+                            items.push(item);
+                    });
+                    return items;
+                }
+            var items = getItems();
+        
+            $.each(items, function(index, value) {
+                image[index]     = new Image();
+                image[index].src = value['src'];
+            });
+            $('.prlightbox').on('click', function (event) {
+                event.preventDefault();
+              
+                var $index = $(".active-thumb").parent().attr('data-slick-index');
+                $index++;
+                $index = $index-1;
+        
+                var options = {
+                    index: $index,
+                    bgOpacity: 0.9,
+                    showHideOpacity: true
+                }
+                var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, items, options);
+                lightBox.init();
+            });
+        });
+        </script>
 </div>
 
+     
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="pswp__bg"></div>
+            <div class="pswp__scroll-wrap"><div class="pswp__container"><div class="pswp__item"></div><div class="pswp__item"></div><div class="pswp__item"></div></div><div class="pswp__ui pswp__ui--hidden"><div class="pswp__top-bar"><div class="pswp__counter"></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button><button class="pswp__button pswp__button--share" title="Share"></button><button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button><button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class="pswp__preloader"><div class="pswp__preloader__icn"><div class="pswp__preloader__cut"><div class="pswp__preloader__donut"></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class="pswp__share-tooltip"></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button><button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class="pswp__caption"><div class="pswp__caption__center"></div></div></div></div></div>
 </body>
  <!-- Including Javascript -->
 
-<!-- belle/index.html   11 Nov 2019 12:20:55 GMT -->
 </html>

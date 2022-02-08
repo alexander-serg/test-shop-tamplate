@@ -4,9 +4,12 @@ from .views import *
 
 urlpatterns = [
     path('', item_list, name='home'),
-    path('about/', about, name='about'),
-    path('service', service, name='service'),
+    path('action/', action, name='action'),
+    path('sale/', sale, name='sale'),
     path('contact/', contact, name='contact'),
-    path('inst/', inst, name='inst'),
+    path('rental/', rental, name='rental'),
+    path('category/wedding', wedding_dress, name='wedding'),
+    path('category/evening', evening_dress, name='evening'),
+    path('category/child', child_dress, name='child'),
     path('post/<slug:post_slug>/', item_detail, name='post'),
 ]

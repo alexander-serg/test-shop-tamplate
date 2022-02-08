@@ -5,10 +5,7 @@
 {% endblock %}
 {% block content %}
 <!--Body Content-->
- <p class="text-right">
-        <a href="{% url 'shop:home' %}" class="button light">Вернуться в каталог</a>
-        <a href="{% url 'orders:order_create' %}" class="button">Checkout</a>
-    </p>
+
     <div id="page-content">
         <div class="bredcrumbWrap">
                     <div class="container breadcrumbs">
@@ -46,7 +43,7 @@
                                         </div>
 
                                         <div class="cart__meta-text">
-                                            Color: Navy<br>Size: Small<br>
+                                            Размер: {{ post.size }}<br>
                                         </div>
                                     </td>
                                     <td class="cart__price-wrapper cart-flex-item">
@@ -80,12 +77,12 @@
                     </form>
                	</div>
                 <div class="col-12 col-sm-12 col-md-4 col-lg-4 cart__footer">
-                	<div class="cart-note">
+<!--                 	<div class="cart-note">
                     	<div class="solid-border">
-							<h5><label for="CartSpecialInstructions" class="cart-note__label small--text-center" style="background-color: yellow">Add a note to your order</label></h5>
+							<h5><label for="CartSpecialInstructions" class="cart-note__label small--text-center">Примечание к вашему заказу</label></h5>
 							<textarea name="note" id="CartSpecialInstructions" class="cart-note__input"></textarea>
 						</div>
-                    </div>
+                    </div> -->
                     <div class="solid-border">
                       <div class="row">
                       	<span class="col-12 col-sm-6 cart__subtotal-title"><strong>Общая стоимость заказа</strong></span>

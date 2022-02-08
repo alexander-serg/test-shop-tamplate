@@ -1,0 +1,53 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+<div id="page-content">	
+    <div class="page section-header text-center contact-template page-template belle">
+			<div class="page-title">
+        		<div class="wrapper"><h1 class="page-width">Наши контакты</h1></div>
+      		</div>
+		</div>
+        <!--End Page Title-->
+
+        <div class="map-section map contact-template page-template belle">
+            <iframe src="https://www.google.com/maps/embed?pb=" height="350" allowfullscreen></iframe>
+            
+        </div>
+        <div class="container contact-template page-template belle ">
+            <div class="row">
+            	<div class="col-12 col-sm-12 col-md-8 col-lg-8 mb-4">
+                <div class="map-section__overlay-wrapper">
+                        <div class="map-section__overlay">
+                            <b>Наш магазин</b>
+                            <div class="rte-setting">
+                                <p>123 Fake St.<br>****, ****</p>
+                                <p>Пн - Пт, 10 - 21<br>Суббота, 11 - 21<br>Воскресенье, 11 - 17</p>
+                            </div>
+                            <p><a href="https://maps.google.com/?daddr=80%20Spadina%20Ave,%20Toronto" class="btn btn--secondary btn--small" target="_blank">Получить местоположение</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                	<div class="open-hours">
+                    	<strong>Время работы</strong><br>
+						Пн - Сб : 9 - 23<br>
+						Вс: 11 - 17
+                    </div>
+                	<hr />
+                    <div class="addressFooter">
+                        <span><p>55 Gallaxy Enque, 2568 steet, 23568</p></span>
+                        <span class="phone"><p>(440) 000 000 0000</p></span>
+                        <span class="email"><p>sales@yousite.com</p></span>
+                    </div>
+                    <hr />
+                   
+                        <span><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Instagram"> <span class="icon__fallback-text">Instagram</span></a></span>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+   </div>
+<hr>
+
+{% endblock %}

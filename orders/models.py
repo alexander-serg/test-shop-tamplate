@@ -3,7 +3,7 @@ from shop.models import Item
 from django.db.models.signals import post_save
 
 class Status(models.Model):
-    name = models.CharField(max_length=24, blank=True, null=True, default=None)
+    name = models.CharField(max_length=24, blank=True, null=True, default=None, verbose_name='название статуса')
     is_active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -16,10 +16,9 @@ class Status(models.Model):
         verbose_name_plural = 'Статусы'
 
 class Order(models.Model):
-    first_name = models.CharField(max_length=50)
-    phone = models.CharField(max_length=48, blank=True, null=True,default=None)
-    email = models.EmailField()
-    city = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=50, verbose_name='Имя')
+    phone = models.CharField(max_length=48, verbose_name='Телефон')
+    message = models.TextField(null=True,default=None, blank=True, verbose_name="Сообщение")
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -72,3 +71,6 @@ def orderItem_post_save(sender, instance, created, **kwargs):
     instance.order.save(force_update=True)
 
 post_save.connect(orderItem_post_save, sender=OrderItem)
+
+
+

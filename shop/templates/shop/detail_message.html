@@ -1,0 +1,13 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}Запрос принят{% endblock %}
+
+{% block content %}
+<div class="container">
+<div class="alert alert-success text-uppercase" style="margin-top: 3em; margin-bottom: 20em;" role="alert">
+    <strong>Запрос получен!</strong> Ожидайте звонка
+</div>
+<div colspan="3" class="text-left"><a href="/" class="btn--link cart-continue"><i class="icon icon-arrow-circle-left"></i> Продолжить покупки</a></div>
+</div>
+    
+{% endblock %}

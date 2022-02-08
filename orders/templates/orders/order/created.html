@@ -3,6 +3,11 @@
 {% block title %}Заказ принят{% endblock %}
 
 {% block content %}
-    <h1>Заказ принят</h1>
-    <p>Благодарим за заказ. Ваш заказ <strong>{{ order.id }}</strong> в очереди</p>
+<div class="container">
+<div class="alert alert-success text-uppercase" style="margin-top: 3em; margin-bottom: 20em;" role="alert">
+    <strong>Благодарим за заказ!</strong> Ожидайте звонка
+</div>
+<div colspan="3" class="text-left"><a href="/" class="btn--link cart-continue"><i class="icon icon-arrow-circle-left"></i> Продолжить покупки</a></div>
+</div>
+    
 {% endblock %}

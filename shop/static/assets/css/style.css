@@ -743,7 +743,7 @@ a.quick-view { margin-bottom:5px !important; }
 .list-view-items .product-price__sale { padding-left:5px; }
 .list-view-items .variants { margin-top:10px; }
 
-.main-content { min-height:500px; }
+.main-content { min-height:300px; }
 
 /*======================================================================
   20. Bredcrumb
@@ -1658,7 +1658,65 @@ body.home15-funiture-template { font-size:14px; }
 #site-scroll i { line-height:40px; }
 /*---------------------------------------
   End Footer ----------------------------
+
+
   ---------------------------------------*/
+
+
+
+/* CSS */
+.button-30 {
+  align-items: center;
+  appearance: none;
+  background-color: #FCFCFD;
+  margin-right: 8px;
+  margin-left: 8px;
+  border-radius: 0px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+   font-family: ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  display: inline-flex;
+  height: 35px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 12px;
+}
+
+.button-30:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button-30:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-30:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+
+
+
+
+
 
 .blur-up.lazyloaded { -webkit-filter:blur(0); filter:blur(0); }
 .blur-up { -webkit-filter:blur(5px); filter:blur(5px); transition:filter 400ms, -webkit-filter 400ms; -webkit-transition:filter 400ms, -webkit-filter 400ms; }

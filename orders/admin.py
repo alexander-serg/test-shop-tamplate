@@ -15,7 +15,7 @@ class StatusAdmin(admin.ModelAdmin):
 admin.site.register(Status, StatusAdmin)
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['id', 'first_name', 'phone', 'email', 'status', 'total_price', 'created', 'updated',]
+    list_display = ['id', 'first_name', 'status', 'total_price', 'created', 'updated',]
     list_filter = ['status', 'created', 'updated']
     inlines = [OrderItemInline]
 
@@ -23,4 +23,6 @@ class OrderAdmin(admin.ModelAdmin):
         model = Order
 
 admin.site.register(Order, OrderAdmin)
+
+
 
